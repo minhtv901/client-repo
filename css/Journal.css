@@ -1,0 +1,140 @@
+/* Journal.css */
+
+.notes-wrapper {
+  max-width: 600px;
+  margin: 32px auto;
+  padding: 20px 16px;
+  background: #f6fff6;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(90, 180, 90, 0.10);
+}
+
+.notes-title {
+  color: #339933;
+  font-weight: 500;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.notes-alert {
+  color: #339933;
+  background: #eaffea;
+  border: 1.2px solid #bde5a8;
+  border-radius: 7px;
+  padding: 8px 14px;
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.notes-error {
+  color: #e74c3c;
+  margin-bottom: 14px;
+}
+
+.notes-textarea,
+.notes-edit-textarea {
+  width: 100%;
+  border: 1.5px solid #bde5a8;
+  border-radius: 6px;
+  padding: 9px 1px;
+  font-size: 1.08rem;
+  background: #f9fff8;
+  margin-bottom: 10px;
+  transition: border 0.15s;
+  resize: vertical;
+}
+
+.notes-textarea:focus,
+.notes-edit-textarea:focus {
+  border: 2px solid #6fdc6f;
+}
+
+.notes-mood-select,
+.notes-edit-mood-select {
+  border: 1.5px solid #bde5a8;
+  border-radius: 7px;
+  padding: 7px 11px;
+  background: #f9fff8;
+  font-size: 1.04rem;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.notes-add-btn {
+  background: linear-gradient(90deg, #b6e2b6 0%, #6fdc6f 100%);
+  color: #225522;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 16px;
+  font-size: 1.07rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s;
+  margin-bottom: 6px;
+}
+.notes-add-btn:hover {
+  background: linear-gradient(90deg, #6fdc6f 0%, #b6e2b6 100%);
+}
+
+.notes-list {
+  margin-top: 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.notes-item {
+  background: #fafff8;
+  border: 2px solid #a8e6a1;
+  border-radius: 11px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 12px rgba(120, 200, 120, 0.09);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.notes-date {
+  font-weight: 600;
+  color: #339933;
+  margin-bottom: 2px;
+}
+
+.notes-mood {
+  color: #888;
+  font-size: 0.97rem;
+  margin-left: 8px;
+}
+
+.notes-action-btn {
+  background: #eaffea;
+  color: #339933;
+  border: 1.2px solid #bde5a8;
+  border-radius: 7px;
+  padding: 6px 13px;
+  font-size: 1.01rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 6px;
+  transition: background 0.14s;
+}
+.notes-action-btn:hover {
+  background: #b6e2b6;
+  color: #225522;
+}
+
+.notes-danger-btn {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 6px 13px;
+  font-size: 1.01rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 6px;
+  transition: background 0.14s;
+}
+.notes-danger-btn:hover {
+  background: #c0392b;
+}

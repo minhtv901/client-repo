@@ -1,0 +1,128 @@
+/* Navbar.css hoặc thêm vào App.css */
+
+/* Navbar tổng thể */
+.navbar {
+  width: 100%;
+  height: 84px !important;
+  background: linear-gradient(90deg, #fffbe7 60%, #e0f8e0 100%);
+  border-bottom: 2px solid #bde5a8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 36px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1200;
+  box-shadow: 0 2px 16px 0 #e0e0e0;
+}
+
+/* Navbar trái */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Brand */
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #43a047;
+  text-decoration: none;
+  letter-spacing: 1px;
+  margin-right: 18px;
+  transition: color 0.2s;
+}
+.navbar-brand:hover {
+  color: #2e7031;
+  text-shadow: 0 2px 8px #bde5a8;
+}
+
+/* Link */
+.navbar-link {
+  font-size: 1.08rem;
+  color: #388e3c;
+  text-decoration: none;
+  margin-right: 8px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: background 0.18s, color 0.18s;
+}
+.navbar-link:hover {
+  background: #c3e6cb;
+  color: #236d2a;
+}
+
+/* Navbar phải */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* User chào */
+.navbar-user {
+  color: #388e3c;
+  font-weight: 500;
+  margin-right: 12px;
+  font-size: 1rem;
+}
+
+/* Button */
+.navbar-button {
+  background: linear-gradient(90deg, #bde5a8 60%, #fffbe7 100%);
+  color: #24723c;
+  border: none;
+  border-radius: 18px;
+  padding: 7px 18px;
+  margin-right: 70px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 1px 4px #d0f3c4;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+.navbar-button:hover {
+  background: #c3e6cb;
+  color: #155724;
+  box-shadow: 0 2px 12px #bde5a8;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .navbar {
+    height: 56px;
+    padding: 0 10px;
+  }
+  .navbar-left {
+    gap: 9px;
+  }
+  .navbar-brand {
+    font-size: 1.1rem;
+    margin-right: 8px;
+  }
+  .navbar-link {
+    font-size: 0.97rem;
+    padding: 5px 8px;
+  }
+  .navbar-right {
+    gap: 8px;
+  }
+  .navbar-user {
+    font-size: 0.95rem;
+    margin-right: 5px;
+  }
+  .navbar-button {
+    padding: 6px 11px;
+    font-size: 0.97rem;
+  }
+}
+/* Khi popup mở, làm sidebar mờ đi và giảm bóng */
+body.popup-open .sidebar .MuiDrawer-paper {
+  filter: brightness(0.92) blur(1.5px);
+  opacity: 0.7;
+  box-shadow: none !important;
+  transition: filter 0.2s, opacity 0.2s;
+  pointer-events: none; /* sidebar không nhận sự kiện khi popup mở */
+}
