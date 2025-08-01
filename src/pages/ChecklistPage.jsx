@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import * as checklistApi from "../helpers/ChecklistApi";
-import '../../css/Checklist.css'; 
+import '../../css/CheckList.css'; 
 
 export default function ChecklistPage() {
   const { user } = useAuth();
