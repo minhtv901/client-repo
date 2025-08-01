@@ -1,7 +1,7 @@
 // src/helpers/axiosInstance.js
 import axios from 'axios';
 
-const backendUrl = 'http://localhost:4000';
+const backendUrl = 'https://mindclean.onrender.com';
 
 // Tạo một instance riêng của axios
 const axiosInstance = axios.create({
