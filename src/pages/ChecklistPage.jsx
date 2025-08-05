@@ -3,6 +3,12 @@ import { useAuth } from "../context/AuthContext";
 import * as checklistApi from "../helpers/ChecklistApi";
 import '../../css/CheckList.css'; 
 
+const CATEGORY_OPTIONS = [
+'Eat clean',
+ 'Do excercise',
+ 'Study'
+];
+
 export default function ChecklistPage() {
   const { user } = useAuth();
   const [checklists, setChecklists] = useState([]);
