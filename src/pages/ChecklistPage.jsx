@@ -8,11 +8,13 @@ export default function ChecklistPage() {
   const [checklists, setChecklists] = useState([]);
   const [loading, setLoading] = useState(true);
   const [newDate, setNewDate] = useState("");
+  const [newCategory, setNewCategory] = useState(CATEGORY_OPTIONS[0]);
   const [newItems, setNewItems] = useState([{ text: "", checked: false }]);
   const [error, setError] = useState("");
   const [editingId, setEditingId] = useState(null); // id of checklist being edited
   const [editItems, setEditItems] = useState([]);
   const [editDate, setEditDate] = useState("");
+  const [editCategory, setEditCategory] = useState(CATEGORY_OPTIONS[0]);
 
   // Fetch checklists when user logs in
   useEffect(() => {
@@ -60,12 +62,14 @@ export default function ChecklistPage() {
     }
     const data = {
       date: newDate,
+      category: newCategory,
       items: newItems,
     };
     const res = await checklistApi.createChecklist(data);
     if (res && res._id) {
       setChecklists([res, ...checklists]);
       setNewDate("");
+      setNewCategory(CATEGORY_OPTIONS[0]);
       setNewItems([{ text: "", checked: false }]);
     } else {
       setError("Could not create checklist, please try again.");
@@ -88,6 +92,7 @@ export default function ChecklistPage() {
     setEditingId(cl._id);
     setEditItems(cl.items.map(item => ({ ...item })));
     setEditDate(cl.date.slice(0, 10));
+    setEditCategory(cl.category || CATEGORY_OPTIONS[0]);
   };
 
   // Cancel editing
@@ -95,6 +100,7 @@ export default function ChecklistPage() {
     setEditingId(null);
     setEditItems([]);
     setEditDate("");
+    setEditCategory(CATEGORY_OPTIONS[0]);
   };
 
   // Edit item content in edit mode
@@ -128,6 +134,7 @@ export default function ChecklistPage() {
     }
     const data = {
       date: editDate,
+      category: editCategory,
       items: editItems,
     };
     const res = await checklistApi.updateChecklist(editingId, data);
@@ -158,7 +165,7 @@ export default function ChecklistPage() {
       i === idx ? { ...item, checked: !item.checked } : item
     );
     // Call API to update
-    const res = await checklistApi.updateChecklist(clId, { date: cl.date, items: newItems });
+    const res = await checklistApi.updateChecklist(clId, { date: cl.date, category: cl.category, items: newItems });
     if (res && res._id) {
       setChecklists(
         checklists.map((c) => (c._id === clId ? res : c))
@@ -191,6 +198,22 @@ export default function ChecklistPage() {
               className="checklist-input"
               style={{ maxWidth: 180 }}
             />
+          </label>
+        </div>
+        <div className="checklist-form-row" style={{ marginBottom: 8 }}>
+          <label>
+            Category:{" "}
+            <select
+              value={newCategory}
+              onChange={e => setNewCategory(e.target.value)}
+              className="checklist-input"
+              style={{ maxWidth: 180 }}
+              required
+            >
+              {CATEGORY_OPTIONS.map(option => (
+                <option key={option} value={option}>{option}</option>
+              ))}
+            </select>
           </label>
         </div>
         <div>
@@ -259,6 +282,22 @@ export default function ChecklistPage() {
                     />
                   </label>
                 </div>
+                <div className="checklist-form-row" style={{ marginBottom: 8 }}>
+                  <label>
+                    Category:{" "}
+                    <select
+                      value={editCategory}
+                      onChange={e => setEditCategory(e.target.value)}
+                      className="checklist-input"
+                      style={{ maxWidth: 180 }}
+                      required
+                    >
+                      {CATEGORY_OPTIONS.map(option => (
+                        <option key={option} value={option}>{option}</option>
+                      ))}
+                    </select>
+                  </label>
+                </div>
                 <ul className="checklist-list">
                   {editItems.map((item, idx) => (
                     <li key={item._id || idx} className="checklist-item">
@@ -301,7 +340,12 @@ export default function ChecklistPage() {
                 className="checklist-card"
               >
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
-                  <strong className="checklist-title">{new Date(cl.date).toLocaleDateString("en-GB")}</strong>
+                  <div>
+                    <strong className="checklist-title">{new Date(cl.date).toLocaleDateString("en-GB")}</strong>
+                    <span style={{ marginLeft: 10, color: "#888", fontSize: 14 }}>
+                      [{cl.category}]
+                    </span>
+                  </div>
                   <div>
                     <button
                       onClick={() => handleEditChecklist(cl)}

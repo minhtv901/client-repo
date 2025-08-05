@@ -2,6 +2,7 @@
 import axios from 'axios';
 
 const backendUrl = 'https://mindclean.onrender.com';
+// const backendUrl = 'http://localhost:4000';
 
 const axiosInstance = axios.create({
     baseURL: backendUrl,

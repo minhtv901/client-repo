@@ -18,7 +18,7 @@ export interface Journal {
 }
 
 export interface ChecklistItem {
-  content: string;
+  text: string;
   checked: boolean;
 }
 
@@ -26,6 +26,7 @@ export interface Checklist {
   _id: string;
   userId: string;
   date: string;
+  category: string; 
   items: ChecklistItem[];
   createdAt: string;
   updatedAt: string;
