@@ -3,17 +3,15 @@ import axios from 'axios';
 
 const backendUrl = 'https://mindclean.onrender.com';
 
-// Tạo một instance riêng của axios
 const axiosInstance = axios.create({
     baseURL: backendUrl,
 });
 
-// Thêm interceptor để tự động gắn token vào header Authorization trước mỗi request
 axiosInstance.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem('token'); // Lấy token từ localStorage
+        const token = localStorage.getItem('token');
         if (token) {
-            config.headers.Authorization = `Bearer ${token}`; // Gắn vào header
+            config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
     },

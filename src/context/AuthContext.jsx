@@ -31,7 +31,6 @@ export function AuthProvider({ children }) {
 
   const register = async (username, password) => {
     const res = await userApi.registerUser({ username, password });
-    // Đăng ký chỉ trả về true/false, KHÔNG lưu token, KHÔNG setUser
     if (res && res.user) {
       return true;
     }
