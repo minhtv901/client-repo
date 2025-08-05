@@ -63,7 +63,7 @@ export default function Profile() {
               <ul>
                 {milestones.map((m, idx) => (
                   <li key={m.days || idx}>
-                    {m.note && <span> - {m.note}</span>}
+                    {m.note && <span>  {m.note}</span>}
                   </li>
                 ))}
               </ul>
